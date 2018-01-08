@@ -1,3 +1,6 @@
+#####
+#    run_analysis.R
+#
 # Set your working directory to the top level in the downloaded files
 setwd("~/R_Coursera/DataCleansing/Assignment/UCI HAR Dataset")
 
@@ -71,11 +74,11 @@ mytidydata <- select(newData, Subject, Activity, contains("mean()"), contains("s
 
 # Calculate the mean of the mean and standard devation of the data set grouped by the Subject and Activity
 
-mytidydata <- mytidydata %>% group_by(Subject, Activity) %>% summarise_all(mean)
+mytidydata <- mytidydata %>% group_by(Activity, Subject) %>% summarise_all(mean)
 
 # Write mytidydata to a file
 
-write.table(mytidydata, sep=" ", file="./mytidydata.csv", row.names = FALSE)
+write.table(mytidydata, sep=" ", file="./mytidydata.txt", row.names = FALSE)
 
 
 # the data is now tidy
